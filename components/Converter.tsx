@@ -61,6 +61,21 @@ export function Converter() {
     }
   }
 
+  function downloadOutput() {
+    if (!canCopy || !result.ok) return;
+    const blob = new Blob([result.output], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    const filename =
+      direction === "yaml-to-json" ? "converted.json" : "converted.yaml";
+    anchor.href = url;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+  }
+
   return (
     <div className="converter">
       <div className="toolbar">
@@ -70,14 +85,14 @@ export function Converter() {
             aria-pressed={direction === "yaml-to-json"}
             onClick={() => switchDirection("yaml-to-json")}
           >
-            YAML to JSON
+            YAML → JSON
           </button>
           <button
             type="button"
             aria-pressed={direction === "json-to-yaml"}
             onClick={() => switchDirection("json-to-yaml")}
           >
-            JSON to YAML
+            JSON → YAML
           </button>
         </div>
         <div className="toolbar-actions">
@@ -89,7 +104,21 @@ export function Converter() {
           </button>
         </div>
       </div>
-      <p className="hint">Runs in this tab. Nothing you paste is uploaded.</p>
+      <p className="hint">
+        <span className="pill">No upload</span>
+        {direction === "yaml-to-json" ? (
+          <>
+            <strong>YAML → JSON</strong> runs in this tab. Documents split by{" "}
+            <code>---</code> become a JSON array. Errors include a line and column
+            when the parser reports one. Nothing you paste is uploaded.
+          </>
+        ) : (
+          <>
+            <strong>JSON → YAML</strong> runs in this tab. Paste JSON on the left
+            and copy YAML on the right. Nothing you paste is uploaded.
+          </>
+        )}
+      </p>
       {!result.ok ? (
         <p id="convert-error" className="notice" role="alert">
           <strong>
@@ -125,14 +154,24 @@ export function Converter() {
         <section className="pane">
           <header>
             <label htmlFor="output-input">{outputName}</label>
-            <button
-              type="button"
-              className="button primary"
-              onClick={copyOutput}
-              disabled={!canCopy}
-            >
-              {copied ? "Copied" : "Copy"}
-            </button>
+            <div className="pane-actions">
+              <button
+                type="button"
+                className="button"
+                onClick={downloadOutput}
+                disabled={!canCopy}
+              >
+                Download
+              </button>
+              <button
+                type="button"
+                className="button primary"
+                onClick={copyOutput}
+                disabled={!canCopy}
+              >
+                {copied ? "Copied" : "Copy"}
+              </button>
+            </div>
           </header>
           <textarea
             id="output-input"
