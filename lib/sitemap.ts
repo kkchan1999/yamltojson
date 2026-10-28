@@ -2,7 +2,7 @@ import { SITEMAP_LASTMOD, SITEMAP_PATHS, SITE_URL } from "@/lib/site";
 
 export function buildSitemapXml(): string {
   const urls = SITEMAP_PATHS.map(({ path, changefreq, priority }) => {
-    const loc = new URL(path, SITE_URL).href;
+    const loc = path === "/" ? SITE_URL : new URL(path, SITE_URL).href;
     return [
       "  <url>",
       `    <loc>${loc}</loc>`,

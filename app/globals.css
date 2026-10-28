@@ -268,7 +268,7 @@ h1 {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 440px;
+  min-height: 360px;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -304,7 +304,7 @@ h1 {
 textarea {
   flex: 1;
   width: 100%;
-  min-height: 320px;
+  min-height: 280px;
   margin: 0;
   padding: 14px 16px 18px;
   border: 0;
@@ -330,12 +330,16 @@ textarea::placeholder {
 }
 
 .notice {
-  margin-top: 12px;
+  margin: 0 0 14px;
   padding: 12px 14px;
   border-radius: 12px;
   background: var(--danger-soft);
   color: var(--danger);
   font-size: 0.95rem;
+}
+
+.panes + .notice {
+  margin-top: 12px;
 }
 
 .notes,

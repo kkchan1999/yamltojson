@@ -90,6 +90,14 @@ export function Converter() {
         </div>
       </div>
       <p className="hint">Runs in this tab. Nothing you paste is uploaded.</p>
+      {!result.ok ? (
+        <p id="convert-error" className="notice" role="alert">
+          <strong>
+            {direction === "yaml-to-json" ? "Invalid YAML." : "Invalid JSON."}
+          </strong>{" "}
+          {result.error}
+        </p>
+      ) : null}
 
       <div className="panes">
         <section className={result.ok ? "pane" : "pane is-error"}>
@@ -136,14 +144,6 @@ export function Converter() {
         </section>
       </div>
 
-      {!result.ok ? (
-        <p id="convert-error" className="notice" role="alert">
-          <strong>
-            {direction === "yaml-to-json" ? "Invalid YAML." : "Invalid JSON."}
-          </strong>{" "}
-          {result.error}
-        </p>
-      ) : null}
       {copyFailed ? (
         <p className="notice" role="alert">
           Could not copy automatically. Select the output and copy it manually.
