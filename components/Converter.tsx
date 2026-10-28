@@ -106,7 +106,6 @@ export function Converter() {
         </div>
       </div>
       <p className="hint">
-        <span className="pill">No upload</span>
         {direction === "yaml-to-json" ? (
           <>
             <strong>YAML → JSON</strong> runs in this tab. Documents split by{" "}
@@ -131,7 +130,7 @@ export function Converter() {
       ) : null}
 
       <div className="panes">
-        <section className="pane">
+        <section className="pane" data-ui>
           <header>
             <label htmlFor="source-input">{sourceName}</label>
           </header>
@@ -155,7 +154,7 @@ export function Converter() {
           />
         </section>
 
-        <section className="pane">
+        <section className="pane" data-ui>
           <header>
             <label htmlFor="output-input">{outputName}</label>
             <div className="pane-actions">

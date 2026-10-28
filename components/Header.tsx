@@ -17,9 +17,9 @@ export function Header() {
       <a className="skip" href="#content">
         Skip to content
       </a>
-      <div className="container header-inner">
+      <div className="wrap header-inner">
         <Link href="/" className="wordmark">
-          yaml<span>to</span>json
+          yamltojson
         </Link>
         <nav aria-label="Primary">
           <ul>

@@ -10,7 +10,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <article className="prose">
-      <div className="container measure">
+      <div className="wrap measure">
         <h1>About</h1>
         <p className="lede">
           yamltojson is a free online converter for one job: turn YAML into JSON,

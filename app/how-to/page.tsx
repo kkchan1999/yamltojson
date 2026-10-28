@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 export default function HowToPage() {
   return (
     <article className="prose">
-      <div className="container measure">
+      <div className="wrap measure">
         <h1>How to convert YAML to JSON</h1>
         <p className="lede">
           <Link href="/">Open the free YAML to JSON converter</Link>. Paste a YAML

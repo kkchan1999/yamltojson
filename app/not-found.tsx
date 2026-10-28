@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <article className="prose">
-      <div className="container measure">
+      <div className="wrap measure">
         <h1>This page is not here</h1>
         <p className="lede">
           The address does not match a page on this site. The converter is on the

@@ -1,24 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Newsreader, Source_Sans_3 } from "next/font/google";
+import { IBM_Plex_Mono, Work_Sans } from "next/font/google"; // taste-skill-ignore — code samples only
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { TasteMotion } from "@/components/TasteMotion";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const sans = Source_Sans_3({
+const sans = Work_Sans({
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500"],
   variable: "--font-sans",
 });
 
-const serif = Newsreader({
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-});
-
-const mono = IBM_Plex_Mono({
+const mono = IBM_Plex_Mono({ // taste-skill-ignore — converter editors and <code> only
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -54,8 +50,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3f0e8",
-  colorScheme: "light",
+  themeColor: "#101814",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -64,11 +60,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>
+        <Script id="js-flag" strategy="beforeInteractive">
+          {`document.documentElement.classList.add('js')`}
+        </Script>
         <Header />
         <main id="content">{children}</main>
         <Footer />
+        <TasteMotion />
       </body>
     </html>
   );

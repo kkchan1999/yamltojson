@@ -10,7 +10,7 @@ export const metadata = pageMetadata({
 export default function PrivacyPage() {
   return (
     <article className="prose">
-      <div className="container measure">
+      <div className="wrap measure">
         <h1>Privacy</h1>
         <p className="lede">
           This converter is built so the document you paste stays on your device.
