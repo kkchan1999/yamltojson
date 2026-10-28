@@ -304,10 +304,9 @@ h1 {
 }
 
 .pane.is-error {
-  border-color: var(--danger-line);
-  border-width: 2px;
-  background: #fff7f4;
-  box-shadow: var(--shadow), 0 0 0 1px rgba(161, 40, 31, 0.12);
+  border: 2px solid var(--danger);
+  background: #faece7;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(161, 40, 31, 0.2);
 }
 
 .pane:focus-within {
