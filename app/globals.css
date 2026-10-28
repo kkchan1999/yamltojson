@@ -55,13 +55,12 @@ html {
   text-size-adjust: 100%;
   scroll-behavior: auto;
   overflow-x: clip;
-  scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
 }
 
 body {
   margin: 0;
   min-height: 100svh;
-  overflow-x: clip;
   display: flex;
   flex-direction: column;
   background: var(--bg);
