@@ -3,7 +3,7 @@
  * metadataBase, canonical URLs, Open Graph, JSON-LD, robots.txt, and sitemap.xml
  * all read this value.
  */
-export const SITE_URL = "https://yamltojson.xyz";
+export const SITE_URL = "https://yaml-to-json.com";
 
 export const SITE_NAME = "YAML to JSON";
 
