@@ -8,8 +8,10 @@
   --line-strong: #cfc6b6;
   --accent: #1e4d40;
   --accent-ink: #173d33;
-  --danger: #8d3b30;
-  --danger-soft: #f8ece8;
+  --danger: #a1281f;
+  --danger-ink: #7a1f19;
+  --danger-soft: #f4ddd7;
+  --danger-line: #c45445;
   --shadow: 0 1px 1px rgba(26, 25, 22, 0.04), 0 16px 40px rgba(26, 25, 22, 0.05);
   --sans: var(--font-sans), "Segoe UI", sans-serif;
   --serif: var(--font-serif), Georgia, "Times New Roman", serif;
@@ -302,12 +304,19 @@ h1 {
 }
 
 .pane.is-error {
-  border-color: #e3c4bd;
+  border: 2px solid var(--danger);
+  background: #faece7;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(161, 40, 31, 0.2);
 }
 
 .pane:focus-within {
   border-color: #8eada2;
   box-shadow: 0 0 0 3px rgba(30, 77, 64, 0.12);
+}
+
+.pane.is-error:focus-within {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(161, 40, 31, 0.16);
 }
 
 .pane header {
@@ -326,6 +335,14 @@ h1 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.pane.is-error header {
+  border-bottom-color: #ead0c8;
+}
+
+.pane.is-error label {
+  color: var(--danger);
 }
 
 textarea {
@@ -358,11 +375,17 @@ textarea::placeholder {
 
 .notice {
   margin: 0 0 14px;
-  padding: 12px 14px;
+  padding: 12px 14px 12px 13px;
+  border: 1px solid var(--danger-line);
+  border-left: 4px solid var(--danger);
   border-radius: 12px;
   background: var(--danger-soft);
-  color: var(--danger);
+  color: var(--danger-ink);
   font-size: 0.95rem;
+}
+
+.notice strong {
+  color: var(--danger);
 }
 
 .panes + .notice {
