@@ -171,9 +171,10 @@ export default function HomePage() {
             Empty input produces empty output and no error. The first problem in
             an invalid document is shown above the editors. When the parser
             reports a location, that note includes the line and column, for
-            example “at line 3, column 1”. Fix that line and convert again. The
-            steps, and a few extra rules about quotes and numbers, are also on
-            the <Link href="/how-to">how to convert YAML to JSON</Link> page.
+            example “at line 3, column 1”, and the source marks that spot
+            instead of painting the whole pane. Fix that line and convert again.
+            The steps, and a few extra rules about quotes and numbers, are also
+            on the <Link href="/how-to">how to convert YAML to JSON</Link> page.
           </p>
 
           <h2>YAML vs JSON (what you should expect)</h2>
@@ -346,8 +347,9 @@ export default function HomePage() {
             others need a different representation before JSON can hold them.
           </p>
           <p>
-            The editor surfaces the first parse error so you can fix the line and
-            convert again. It does not list every problem in the file at once.
+            The editor surfaces the first parse error, and marks that location in
+            the source when a line and column are known, so you can fix the line
+            and convert again. It does not list every problem in the file at once.
             Correct the first line, and the next error, if there is one, appears
             in the same place. That single-note style is deliberate: a long list
             of follow-on errors is usually noise caused by the first break. If

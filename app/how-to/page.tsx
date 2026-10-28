@@ -37,9 +37,9 @@ export default function HowToPage() {
         <h2>If the YAML is rejected</h2>
         <p>
           The message above the editors quotes the first problem, including a line
-          and column when the parser has one. Indent with spaces, not tabs. Close
-          quotes, brackets, and braces. Then edit the YAML and the JSON updates
-          on its own.
+          and column when the parser has one, and the source marks that spot.
+          Indent with spaces, not tabs. Close quotes, brackets, and braces. Then
+          edit the YAML and the JSON updates on its own.
         </p>
         <p>A few values change type if you leave them unquoted:</p>
         <ul>

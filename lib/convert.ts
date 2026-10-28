@@ -2,9 +2,14 @@ import { parseAllDocuments, stringify } from "yaml";
 
 export type Direction = "yaml-to-json" | "json-to-yaml";
 
+export type SourceLocation = {
+  line: number;
+  column: number;
+};
+
 export type ConvertResult =
   | { ok: true; output: string }
-  | { ok: false; error: string };
+  | ({ ok: false; error: string } & Partial<SourceLocation>);
 
 const PARSE_OPTIONS = {
   prettyErrors: true,
@@ -29,7 +34,12 @@ export function convert(source: string, direction: Direction): ConvertResult {
       direction === "yaml-to-json"
         ? "This YAML could not be parsed."
         : "This JSON could not be parsed.";
-    return { ok: false, error: messageFrom(error, fallback) };
+    const location = locationFrom(error, stripBom(source));
+    return {
+      ok: false,
+      error: messageFrom(error, fallback),
+      ...(location ?? {}),
+    };
   }
 }
 
@@ -131,6 +141,69 @@ function normalize(value: unknown, stack: Set<object> = new Set()): unknown {
   }
   stack.delete(value);
   return output;
+}
+
+function locationFrom(error: unknown, source: string): SourceLocation | undefined {
+  if (typeof error === "object" && error !== null) {
+    const linePos = (error as { linePos?: unknown }).linePos;
+    const start = Array.isArray(linePos) ? linePos[0] : linePos;
+    const fromLinePos = lineCol(start);
+    if (fromLinePos) return fromLinePos;
+
+    const pos = (error as { pos?: unknown }).pos;
+    const offset = Array.isArray(pos) ? pos[0] : pos;
+    if (typeof offset === "number" && Number.isFinite(offset) && offset >= 0) {
+      return offsetToLocation(source, offset);
+    }
+  }
+
+  if (!(error instanceof Error)) return undefined;
+
+  const pretty =
+    /\bline (\d+)\b(?:\s*,\s*column\s+|\s+column\s+)(\d+)/i.exec(error.message) ??
+    /\(line (\d+) column (\d+)\)/i.exec(error.message);
+  if (pretty) {
+    return finiteLocation(Number(pretty[1]), Number(pretty[2]));
+  }
+
+  const atPosition = /at position (\d+)/i.exec(error.message);
+  if (atPosition) {
+    return offsetToLocation(source, Number(atPosition[1]));
+  }
+
+  return undefined;
+}
+
+function lineCol(value: unknown): SourceLocation | undefined {
+  if (typeof value !== "object" || value === null) return undefined;
+  const line = (value as { line?: unknown }).line;
+  const column =
+    (value as { col?: unknown }).col ?? (value as { column?: unknown }).column;
+  return finiteLocation(line, column);
+}
+
+function offsetToLocation(source: string, offset: number): SourceLocation | undefined {
+  if (!Number.isFinite(offset) || offset < 0) return undefined;
+  const clamped = Math.min(Math.floor(offset), source.length);
+  const until = source.slice(0, clamped);
+  const line = until.split("\n").length;
+  const lastBreak = until.lastIndexOf("\n");
+  const column = clamped - lastBreak;
+  return finiteLocation(line, column);
+}
+
+function finiteLocation(line: unknown, column: unknown): SourceLocation | undefined {
+  if (
+    typeof line !== "number" ||
+    typeof column !== "number" ||
+    !Number.isInteger(line) ||
+    !Number.isInteger(column) ||
+    line < 1 ||
+    column < 1
+  ) {
+    return undefined;
+  }
+  return { line, column };
 }
 
 function messageFrom(error: unknown, fallback: string): string {
