@@ -17,7 +17,7 @@ export const faqs = [
   {
     question: "What should I check if my YAML is invalid?",
     answer:
-      "Indent with spaces, not tabs. Keep list items and keys aligned. Close quotes and brackets. If a value should stay a string, quote it — unquoted 1.10 becomes 1.1, and unquoted 0123 becomes 123. The note above the editors shows the first problem the parser finds, including a line and column when it has one.",
+      "Indent with spaces, not tabs. Keep list items and keys aligned. Close quotes and brackets. If a value should stay a string, quote it — unquoted 1.10 becomes 1.1, and unquoted 0123 becomes 123. The note above the editors shows the first problem the parser finds, including a line and column when it has one, and the source marks that spot.",
   },
   {
     question: "How do I copy the JSON output?",

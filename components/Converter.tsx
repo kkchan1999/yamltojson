@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SourceEditor } from "@/components/SourceEditor";
 import { convert, type Direction } from "@/lib/convert";
 import { SAMPLE_JSON, SAMPLE_YAML } from "@/lib/samples";
 
@@ -109,8 +110,9 @@ export function Converter() {
         {direction === "yaml-to-json" ? (
           <>
             <strong>YAML → JSON</strong> runs in this tab. Documents split by{" "}
-            <code>---</code> become a JSON array. Errors include a line and column
-            when the parser reports one. Nothing you paste is uploaded.
+            <code>---</code> become a JSON array. When the parser reports a line
+            and column, that spot is marked in the source. Nothing you paste is
+            uploaded.
           </>
         ) : (
           <>
@@ -129,14 +131,16 @@ export function Converter() {
       ) : null}
 
       <div className="panes">
-        <section className={result.ok ? "pane" : "pane is-error"}>
+        <section className="pane">
           <header>
             <label htmlFor="source-input">{sourceName}</label>
           </header>
-          <textarea
+          <SourceEditor
             id="source-input"
             value={source}
-            onChange={(event) => updateSource(event.target.value)}
+            onChange={updateSource}
+            errorLine={result.ok ? undefined : result.line}
+            errorColumn={result.ok ? undefined : result.column}
             spellCheck={false}
             autoCapitalize="off"
             autoCorrect="off"
