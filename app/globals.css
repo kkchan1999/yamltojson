@@ -258,6 +258,32 @@ h1 {
   font-size: 0.92rem;
 }
 
+.hint strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.pill {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(30, 77, 64, 0.1);
+  color: var(--accent-ink);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+.pane-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .panes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -288,6 +314,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
   padding: 10px 12px 10px 16px;
   border-bottom: 1px solid var(--line);
@@ -343,13 +370,15 @@ textarea::placeholder {
 }
 
 .notes,
-.faq {
+.faq,
+.guide {
   padding: 36px 0 8px;
 }
 
 .notes h2,
 .faq h2,
-.prose h2 {
+.prose h2,
+.guide h2 {
   margin: 2rem 0 0.7rem;
   font-size: 1.7rem;
 }
@@ -367,9 +396,53 @@ textarea::placeholder {
 }
 
 .notes a,
-.prose a {
+.prose a,
+.guide a {
   color: var(--accent-ink);
   text-underline-offset: 3px;
+}
+
+.lede-follow {
+  max-width: 40rem;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.guide h2:first-child {
+  margin-top: 0.2rem;
+}
+
+.guide p,
+.guide li {
+  color: var(--ink);
+}
+
+.guide p + p,
+.guide ul + p,
+.guide ol + p,
+.guide pre + p,
+.guide .example-label {
+  margin-top: 0.9rem;
+}
+
+.guide ul,
+.guide ol {
+  margin: 0.45rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.guide li + li {
+  margin-top: 0.4rem;
+}
+
+.guide .example-label {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .faq {

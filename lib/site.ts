@@ -7,10 +7,11 @@ export const SITE_URL = "https://yamltojson.xyz";
 
 export const SITE_NAME = "YAML to JSON";
 
-export const SITE_TITLE = "YAML to JSON – Free Online Converter";
+export const SITE_TITLE =
+  "YAML to JSON Converter – Free Online (Browser-Only)";
 
 export const SITE_DESCRIPTION =
-  "Free online YAML to JSON converter. Paste YAML in your browser and get formatted JSON instantly. No sign-up, and your text is not uploaded.";
+  "Convert YAML to JSON online in your browser. Paste YAML, get formatted JSON instantly—or switch to JSON to YAML. Free YAML converter / formatter style output, no sign-up, nothing uploaded.";
 
 export const SITEMAP_LASTMOD = "2026-10-28";
 

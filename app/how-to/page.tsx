@@ -14,10 +14,10 @@ export default function HowToPage() {
       <div className="container measure">
         <h1>How to convert YAML to JSON</h1>
         <p className="lede">
-          Use the converter on the homepage. Paste a YAML document, read the JSON
-          beside it, and copy the result. You can also reverse the direction and
-          turn JSON into YAML. The parser runs in your browser. There is no
-          sign-up.
+          <Link href="/">Open the free YAML to JSON converter</Link>. Paste a YAML
+          document, read the JSON beside it, and copy the result. You can also
+          reverse the direction and turn JSON into YAML. The parser runs in your
+          browser. There is no sign-up.
         </p>
 
         <h2>Convert a document</h2>
@@ -27,13 +27,16 @@ export default function HowToPage() {
           </li>
           <li>Paste your YAML into the left box, or click Sample to load an example.</li>
           <li>Read the JSON on the right. It is indented with two spaces.</li>
-          <li>Click Copy to put that JSON on your clipboard.</li>
+          <li>
+            Click Copy to put that JSON on your clipboard, or Download to save a
+            file.
+          </li>
           <li>Click Clear when you want an empty editor.</li>
         </ol>
 
         <h2>If the YAML is rejected</h2>
         <p>
-          The message under the boxes quotes the first problem, including a line
+          The message above the editors quotes the first problem, including a line
           and column when the parser has one. Indent with spaces, not tabs. Close
           quotes, brackets, and braces. Then edit the YAML and the JSON updates
           on its own.
@@ -108,6 +111,21 @@ enabled: true`}</code>
   "enabled": true
 }`}</code>
         </pre>
+
+        <h2>YAML to JSON online versus a CLI</h2>
+        <p>
+          A command-line converter is the better fit when the same file is
+          converted on every build, in CI, or from a repository script. You can
+          pin a version, read from disk, and fail the job when the file is invalid.
+        </p>
+        <p>
+          This site is the other case: a YAML to JSON online conversion for a
+          snippet already on the clipboard. There is nothing to install, and the
+          parser runs in the tab, so a one-off manifest does not need a project.
+          Use a CLI when conversion is part of a pipeline. Use the browser when
+          you want to inspect or copy a result once. Both directions, YAML to JSON
+          and JSON to YAML, stay on the <Link href="/">homepage converter</Link>.
+        </p>
 
         <h2>Why bother</h2>
         <p>
