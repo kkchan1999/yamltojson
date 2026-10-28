@@ -79,11 +79,7 @@ export function ExpectList() {
     <section className="expect" aria-labelledby="expect-heading">
       <div className="wrap">
         <div className="expect-head">
-          <h2 id="expect-heading">
-            YAML vs JSON
-            <br />
-            what you should expect
-          </h2>
+          <h2 id="expect-heading">YAML vs JSON</h2>
           <p data-reveal>
             They can describe the same trees. They are not the same syntax. A
             conversion is a translation.

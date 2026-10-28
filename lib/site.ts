@@ -11,7 +11,7 @@ export const SITE_TITLE =
   "YAML to JSON Converter – Free Online (Browser-Only)";
 
 export const SITE_DESCRIPTION =
-  "Convert YAML to JSON online in your browser. Paste YAML, get formatted JSON instantly—or switch to JSON to YAML. Free YAML converter / formatter style output, no sign-up, nothing uploaded.";
+  "Convert YAML to JSON online in your browser. Paste YAML, get formatted JSON instantly, or switch to JSON to YAML. Free YAML converter / formatter style output, no sign-up, nothing uploaded.";
 
 export const SITEMAP_LASTMOD = "2026-10-28";
 

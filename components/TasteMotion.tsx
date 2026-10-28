@@ -22,13 +22,8 @@ export function TasteMotion() {
     );
     targets.forEach((el) => io.observe(el));
     const safety = window.setTimeout(() => {
-      targets.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) {
-          el.classList.add("is-in");
-        }
-      });
-    }, 2500);
+      targets.forEach((el) => el.classList.add("is-in"));
+    }, 2800);
     return () => {
       io.disconnect();
       window.clearTimeout(safety);

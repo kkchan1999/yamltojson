@@ -17,7 +17,7 @@ export const faqs = [
   {
     question: "What should I check if my YAML is invalid?",
     answer:
-      "Indent with spaces, not tabs. Keep list items and keys aligned. Close quotes and brackets. If a value should stay a string, quote it — unquoted 1.10 becomes 1.1, and unquoted 0123 becomes 123. The note above the editors shows the first problem the parser finds, including a line and column when it has one, and the source marks that spot.",
+      "Indent with spaces, not tabs. Keep list items and keys aligned. Close quotes and brackets. If a value should stay a string, quote it: unquoted 1.10 becomes 1.1, and unquoted 0123 becomes 123. The note above the editors shows the first problem the parser finds, including a line and column when it has one, and the source marks that spot.",
   },
   {
     question: "How do I copy the JSON output?",
@@ -37,6 +37,6 @@ export const faqs = [
   {
     question: "Does it work as a YAML parser for multi-document files?",
     answer:
-      "Yes. Streams separated by --- convert to a JSON array with one element per document—handy for Kubernetes-style manifests.",
+      "Yes. Streams separated by --- convert to a JSON array with one element per document, handy for Kubernetes-style manifests.",
   },
 ] as const;

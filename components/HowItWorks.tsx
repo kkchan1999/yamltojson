@@ -44,7 +44,7 @@ export function HowItWorks() {
           data-reveal
           style={{ ["--i" as string]: index }}
         >
-          {stage.heading ? <h2 id="how-heading">{stage.heading}</h2> : <div />}
+          {stage.heading ? <h2 id="how-heading">{stage.heading}</h2> : null}
           <div data-ui className="stage-card">
             <p className="card-label">{stage.label}</p>
             <pre>

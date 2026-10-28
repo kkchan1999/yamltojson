@@ -74,25 +74,23 @@ export default function HomePage() {
 
       <section className="hero">
         <div className="wrap hero-copy">
-          <div>
-            <h1 className="lines">
-              <span className="line">
-                <span data-line style={{ ["--i" as string]: 0 }}>
-                  YAML to JSON
-                </span>
+          <h1 className="lines">
+            <span className="line">
+              <span data-line style={{ ["--i" as string]: 0 }}>
+                YAML to JSON
               </span>
-              <span className="line">
-                <span data-line style={{ ["--i" as string]: 1 }}>
-                  Converter
-                </span>
+            </span>
+            <span className="line">
+              <span data-line style={{ ["--i" as string]: 1 }}>
+                Converter
               </span>
-            </h1>
-            <p className="lede" data-rise style={{ ["--i" as string]: 2 }}>
-              Paste YAML on the left and copy formatted JSON from the right. It
-              is free, it runs in your browser, and it does not ask you to sign
-              up. Flip the direction for JSON to YAML.
-            </p>
-          </div>
+            </span>
+          </h1>
+          <p className="lede" data-rise style={{ ["--i" as string]: 2 }}>
+            Paste YAML on the left and copy formatted JSON from the right. It
+            is free, it runs in your browser, and it does not ask you to sign
+            up. Flip the direction for JSON to YAML.
+          </p>
         </div>
         <div className="wrap hero-tool" data-rise style={{ ["--i" as string]: 3 }}>
           <Converter />
@@ -109,6 +107,7 @@ export default function HomePage() {
               width={1920}
               height={1516}
               alt="Stacks of boxed IBM punch cards filling a federal records warehouse in 1959"
+              decoding="async"
             />
             <figcaption>
               IBM punch-card storage at the Federal Records Center, Alexandria,
@@ -122,7 +121,7 @@ export default function HomePage() {
               and app settings. Many APIs, front-end fixtures, and log pipelines
               expect JSON. A free online YAML to JSON converter lets you paste a
               snippet, check the structure, and copy JSON without installing a
-              CLI — useful when you only need a one-off conversion.
+              CLI, useful when you only need a one-off conversion.
             </p>
             <p>
               That one-off case shows up constantly. A manifest goes into a ticket
@@ -164,24 +163,24 @@ export default function HomePage() {
 
       <section className="chapter" aria-labelledby="how-prose-heading">
         <div className="wrap chapter-grid">
-          <h2 id="how-prose-heading">Paste, parse, copy</h2>
+          <div className="chapter-copy" data-reveal>
+            <h2 id="how-prose-heading">Paste, parse, copy</h2>
+            <ol className="step-marks">
+              <li>Paste YAML on the left.</li>
+              <li>JSON appears as you type.</li>
+              <li>Copy or download the result.</li>
+            </ol>
+          </div>
           <div className="body" data-reveal>
             <p>
               Conversion runs locally in the tab. This page is a browser YAML
-              parser plus formatter-style JSON output — not a server upload form.
+              parser plus formatter-style JSON output, not a server upload form.
               The parser is the yaml package, running as JavaScript on your device.
               Nothing in the text areas is sent off for conversion. Sample fills
               the current direction with a short built-in document. Clear empties
               the input. There is no submit button: a valid edit updates the other
               side immediately.
             </p>
-            <ol>
-              <li>Paste YAML on the left (or load a small example).</li>
-              <li>
-                Valid input becomes pretty-printed JSON on the right as you type.
-              </li>
-              <li>Copy or download the result.</li>
-            </ol>
             <p>
               The two controls above the editors pick the direction. YAML to JSON
               is the default. JSON to YAML uses the same boxes, with JSON on the
@@ -216,7 +215,14 @@ export default function HomePage() {
 
       <section className="chapter" aria-labelledby="vs-detail-heading">
         <div className="wrap chapter-grid">
-          <h2 id="vs-detail-heading">What the translation keeps</h2>
+          <div className="chapter-copy" data-reveal>
+            <h2 id="vs-detail-heading">What it keeps</h2>
+            <ul className="keep-marks">
+              <li>Maps, lists, strings</li>
+              <li>Numbers, true, false, null</li>
+              <li>Comments do not survive</li>
+            </ul>
+          </div>
           <div className="body" data-reveal>
             <p>
               YAML and JSON can describe the same trees of maps, lists, strings,
@@ -305,14 +311,14 @@ export default function HomePage() {
               width={1920}
               height={1277}
               alt="A tied bundle of metal letterpress type, letters locked in rows"
-              loading="lazy"
+              decoding="async"
             />
             <figcaption>
               Metal typesetting locked in a forme, photographed by Hannes Wolf.
             </figcaption>
           </figure>
           <div className="body" data-reveal>
-            <h2 id="reverse-heading">JSON to YAML on the same page</h2>
+            <h2 id="reverse-heading">JSON to YAML</h2>
             <p>
               Need the reverse direction? Switch to <strong>JSON to YAML</strong> on
               this converter. Paste JSON, get readable YAML for configs or docs.
@@ -355,14 +361,14 @@ export default function HomePage() {
               width={1920}
               height={864}
               alt="A blue IBM punch card with rows of digits and rectangular holes"
-              loading="lazy"
+              decoding="async"
             />
             <figcaption>
               A blue IBM-style punch card, the document as a fixed grid of holes.
             </figcaption>
           </figure>
           <div className="body" data-reveal>
-            <h2 id="errors-heading">Common errors and how to fix them</h2>
+            <h2 id="errors-heading">Common errors</h2>
             <ul>
               <li>Tabs for indentation: use spaces.</li>
               <li>Misaligned list items under a key.</li>
@@ -445,7 +451,7 @@ export default function HomePage() {
               width={1920}
               height={2880}
               alt="Inverted lead type locked in a printing forme on a metal bed"
-              loading="lazy"
+              decoding="async"
             />
             <figcaption>
               Early lead type typesetting, photographed by Thomas Quine.
@@ -460,14 +466,20 @@ export default function HomePage() {
               remain. Nothing else is rewritten: the name stays a string, and{" "}
               <code>debug</code> stays a boolean because it was not quoted.
             </p>
-            <p className="example-label">YAML</p>
-            <pre>
-              <code>{serviceYaml}</code>
-            </pre>
-            <p className="example-label">JSON (comments removed)</p>
-            <pre>
-              <code>{serviceJson}</code>
-            </pre>
+            <div className="example-pair">
+              <div data-ui className="stage-card">
+                <p className="card-label">YAML</p>
+                <pre>
+                  <code>{serviceYaml}</code>
+                </pre>
+              </div>
+              <div data-ui className="stage-card">
+                <p className="card-label">JSON</p>
+                <pre>
+                  <code>{serviceJson}</code>
+                </pre>
+              </div>
+            </div>
             <p>
               In the editor, pretty-printing uses two spaces, so a short array is
               written one value per line. The values are the same as the JSON
@@ -479,14 +491,20 @@ export default function HomePage() {
               shape. Documents separated by <code>---</code> become one array. Two
               small resources look like this:
             </p>
-            <p className="example-label">YAML</p>
-            <pre>
-              <code>{multiYaml}</code>
-            </pre>
-            <p className="example-label">JSON array</p>
-            <pre>
-              <code>{multiJson}</code>
-            </pre>
+            <div className="example-pair">
+              <div data-ui className="stage-card">
+                <p className="card-label">YAML stream</p>
+                <pre>
+                  <code>{multiYaml}</code>
+                </pre>
+              </div>
+              <div data-ui className="stage-card">
+                <p className="card-label">JSON array</p>
+                <pre>
+                  <code>{multiJson}</code>
+                </pre>
+              </div>
+            </div>
             <p>
               Paste only the service example and you get one object, not an array.
               The array appears when a <code>---</code> separator actually splits
@@ -506,7 +524,7 @@ export default function HomePage() {
             width={960}
             height={720}
             alt="A hand setting switches on an IBM SAGE console"
-            loading="lazy"
+            decoding="async"
           />
           <video
             autoPlay
@@ -524,7 +542,7 @@ export default function HomePage() {
         </div>
         <div className="wrap film-copy">
           <h2 id="privacy-heading">Privacy</h2>
-          <div data-reveal>
+          <div className="body" data-reveal>
             <p>
               Nothing you paste is uploaded for conversion. The YAML to JSON parser
               runs on your device. Loading the site still fetches static assets
