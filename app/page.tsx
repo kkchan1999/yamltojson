@@ -72,10 +72,11 @@ export default function HomePage() {
       <section className="hero">
         <div className="container">
           <p className="eyebrow">Free online tool</p>
-          <h1>YAML to JSON Converter</h1>
+          <h1>Online YAML to JSON Converter</h1>
           <p className="lede">
-            Paste YAML on the left and copy formatted JSON from the right. It is
-            free, it runs in your browser, and it does not ask you to sign up.
+            Paste YAML on the left and copy formatted JSON from the right. This
+            free online YAML converter runs in your browser and does not ask you
+            to sign up.
           </p>
           <p className="lede-follow">
             Also works as a quick JSON to YAML path when you flip the direction—still

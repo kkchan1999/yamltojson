@@ -15,7 +15,8 @@ export const faqs = [
       "YAML is a readable format for config and data. It allows comments, anchors, and light punctuation. JSON is stricter and is what many APIs and tools expect. JSON has no comments, so comments are dropped. Anchors are resolved into repeated values.",
   },
   {
-    question: "What should I check if my YAML is invalid?",
+    question:
+      "What should I check if my YAML is invalid? Does it highlight the line and column?",
     answer:
       "Indent with spaces, not tabs. Keep list items and keys aligned. Close quotes and brackets. If a value should stay a string, quote it — unquoted 1.10 becomes 1.1, and unquoted 0123 becomes 123. The note above the editors shows the first problem the parser finds, including a line and column when it has one, and the source marks that spot.",
   },
@@ -38,5 +39,15 @@ export const faqs = [
     question: "Does it work as a YAML parser for multi-document files?",
     answer:
       "Yes. Streams separated by --- convert to a JSON array with one element per document—handy for Kubernetes-style manifests.",
+  },
+  {
+    question: "Should I use this online tool or a CLI like yq?",
+    answer:
+      "Use the browser for a one-off paste. Reach for yq, a short Python or Node script, or a build step when the same conversion belongs in a pipeline. This page does not replace those tools.",
+  },
+  {
+    question: "What are common uses for this YAML to JSON converter?",
+    answer:
+      "Typical one-offs: turn a Docker Compose file into JSON, peek at a CI config without installing a parser, or convert a Kubernetes-style multi-document paste so each resource is one array element.",
   },
 ] as const;
